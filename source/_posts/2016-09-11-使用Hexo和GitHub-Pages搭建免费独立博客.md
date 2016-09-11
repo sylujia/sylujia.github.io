@@ -33,7 +33,7 @@ tags:
 # 准备工作
 相信自己，敢于面对，过程并不是很难。
 
-## Nodejs 环境包
+## Nodejs环境包
 
 因为 Hexo 是基于 Node.js 的第三方模块，所以缺少 Node.js 不可。访问 [Node.js官网](http://nodejs.org/)下载适合自己系统的 Node.js 安装包。目前最新的版本为 ｖ6.5.0。
 
@@ -50,7 +50,7 @@ tags:
 这里，我们要区分清楚git与github。
 git是一个版本控制的工具，而github有点类似于远程仓库，用于存放用git管理的各种项目。
 
-###　与GitHub建立联系
+### 与GitHub建立联系
 
 git安装好以后执行以下步骤：
 > 1. 从程序目录打开 "Git Bash" ,或者直接用git shell，github自带的工具
@@ -101,11 +101,17 @@ Hexo 是一个轻量的静态博客框架。通过Hexo可以快速生成一个�
 * [Git](http://git-scm.com/)
 
 如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。打开git bash执行以下命令：
-```$ npm install -g hexo-cli```
+```
+$ npm install -g hexo-cli
+```
 这样hexo就已经安装好了。
+
 ## 使用hexo建站
+
 安装完后，在你喜欢的文件夹内（我的是根目录）（例如H：\），点击鼠标右键选择Git bash，输入以下指令（填自己的地址）：
-``` git clone git@github.com:sylujia/sylujia.github.io.git ```
+``` 
+git clone git@github.com:sylujia/sylujia.github.io.git 
+```
 ![002.png](http://odbh0h495.bkt.clouddn.com/001.png)
 该命令会把你的博客仓库同步下来，然后cd到你的仓库文件夹下面依次执行以下命令：
 > 1、$ hexo init
@@ -118,12 +124,17 @@ Hexo 是一个轻量的静态博客框架。通过Hexo可以快速生成一个�
 4、$ hexo server
 
 这个博客只是本地的，别人是浏览不了的，之后需要部署到GitHub上。
+
 ### 相关资料
+
 * [Hexo 官方文档](https://hexo.io/zh-cn/docs/)
 
 ## 部署博客到GitHub上
+
 部署其实很简单，只要改一下配置文件，执行几条命令就行了，为了以后的方便，现在麻烦了一点，大家跟着做就行了，具体原因也在配置管理与优化里有讲到。
+
 ### 配置站点文件
+
 我们继续使用上面的文件夹H:\sylujia.github.io（也可以新建一个文件夹重新生成），然后编辑该文件夹下的_config.yml（这是站点配置文件）
 默认生成的_config.yml：
 ``` 
@@ -142,15 +153,19 @@ deploy:
 这里解释一下前面为什么建立两个分支master和hexo，为了管理方便，以后master分支用来发布网站（一会再说怎么发布），hexo分支用来存放Hexo网站文件。
 ### 发布
 为了能够使Hexo部署到GitHub上，需要安装一个插件：（在项目目录下执行命令）
-``` $ npm install hexo-deployer-git --save ```
+``` 
+$ npm install hexo-deployer-git --save 
+```
 然后，执行下列指令即可完成部署：（以后发布也按照这三条命令执行）
 ``` 
 $ hexo clean #清空public文件夹下生成的静态文件和db.json文件
 $ hexo generate #重新生成静态文件和db.json
 $ hexo deploy #按照站点配置文件部署到github上
- ```
+```
 之后，可以通过在浏览器键入：username.github.io进行浏览，开心吧~
+
 ### 提交Hexo网站文件到hexo分支
+
 由于上面执行了hexo init命令，所以要重新关联远端库
 首先在项目文件夹下执行以下命令：
 ``` 
@@ -159,9 +174,13 @@ $ git remote add origin git@github.com:sylujia/sylujia.github.io.git #使用你�
 $ git pull #pull一下你的远端库
 ```
 此时你应该在hexo分支下，如下：
-``` $ H:\sylujia.github.io (hexo) (hexo-site@0.0.0)```
+``` 
+$ H:\sylujia.github.io (hexo) (hexo-site@0.0.0)
+```
 如果不是，执行以下命令切换到hexo分支：
-``` $ git checkout hexo ```
+``` 
+$ git checkout hexo 
+```
 然后执行以下命令提交网站相关文件：
 ```
 $ git add . #添加所有文件到暂存区
@@ -199,8 +218,8 @@ Hexo部署到GitHub上的文件，是.md（你的博文）转化之后的.html�
 6、修改_config.yml中的deploy参数，分支应为master；
 7、使用git init 、
 git remote add origin git@github.com:sylujia/sylujia.github.io.git以及git pull命令重新关联远端库。
-7、使用git checkout hexo命令切换到hexo分支然后依次执行git add .、git commit -m “…”、git push origin hexo提交网站相关的文件；
-8、执行hexo generate -d生成网站并部署到GitHub上。
+8、使用git checkout hexo命令切换到hexo分支然后依次执行git add .、git commit -m “…”、git push origin hexo提交网站相关的文件；
+9、执行hexo generate -d生成网站并部署到GitHub上。
 
 
 这样一来，在GitHub上的sylujia.github.io仓库就有两个分支，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。完美！
